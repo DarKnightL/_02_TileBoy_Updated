@@ -15,6 +15,8 @@ public class GameSession : MonoBehaviour
 
     private int score = 0;
 
+    private ResetOnRespawn[] objectsToReset;
+
     private void Awake()
     {
         int numGameSession = FindObjectsOfType<GameSession>().Length;
@@ -31,14 +33,19 @@ public class GameSession : MonoBehaviour
 
     private void Start()
     {
+        objectsToReset = FindObjectsOfType<ResetOnRespawn>();
         scoreText.text = "Score: " + score.ToString();
         lifeText.text = "Life X " + playerLives.ToString();
+    
 
     }
 
 
+
+
     public void ProcessPlayerDeath()
     {
+
         if (playerLives > 1)
         {
             TakeLife();
@@ -52,6 +59,11 @@ public class GameSession : MonoBehaviour
 
     private void ResetGameSession()
     {
+        for (int i = 0; i < objectsToReset.Length; i++)
+        {
+            objectsToReset[i].gameObject.SetActive(true);
+            objectsToReset[i].ResetStatus();
+        }
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }
