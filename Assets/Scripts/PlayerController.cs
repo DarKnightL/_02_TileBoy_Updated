@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
             FlipSprite();
             Jump();
             ClimbLadder();
-            Die();
+            DieCo();
         }
     }
 
@@ -100,14 +100,21 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Die()
+    private IEnumerator Die()
     {
         if (collider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazard")))
         {
             animator.SetTrigger("Dying");
             rigidbody.velocity = deathPunch;
             isAlive = false;
+
+            yield return new WaitForSecondsRealtime(2.5f);
             FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
+    }
+
+
+    private void DieCo() {
+        StartCoroutine(Die());
     }
 }

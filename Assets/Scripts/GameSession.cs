@@ -17,6 +17,8 @@ public class GameSession : MonoBehaviour
 
     private ResetOnRespawn[] objectsToReset;
 
+    public bool respawnCoActive=true;
+
     private void Awake()
     {
         int numGameSession = FindObjectsOfType<GameSession>().Length;
@@ -48,7 +50,7 @@ public class GameSession : MonoBehaviour
 
         if (playerLives > 1)
         {
-            TakeLife();
+            StartCoroutine(TakeLifeCo());
         }
         else
         {
@@ -69,10 +71,14 @@ public class GameSession : MonoBehaviour
     }
 
 
-    private void TakeLife()
+    public IEnumerator TakeLifeCo()
     {
         playerLives--;
         lifeText.text = "Life X " + playerLives.ToString();
+        respawnCoActive = true;
+
+        yield return new WaitForSecondsRealtime(2f);
+        respawnCoActive = false;
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
