@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MovingPlatform
+  - Enemy
+  - KillPlane
+  - CheckPoint
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -20,7 +25,7 @@ TagManager:
   - Enemy
   - Hazard
   - Interactive
-  - 
+  - Boss
   - 
   - 
   - 
@@ -53,12 +58,12 @@ TagManager:
   - name: Hazard
     uniqueID: 978903959
     locked: 0
+  - name: Interactive
+    uniqueID: 1953421677
+    locked: 0
   - name: Player
     uniqueID: 18495053
     locked: 0
   - name: Foreground
     uniqueID: 3812077851
-    locked: 0
-  - name: Interactive
-    uniqueID: 1953421677
     locked: 0

@@ -20,7 +20,7 @@ public class LevelDoor : MonoBehaviour {
 
 	void Start () {
 
-        PlayerPrefs.SetInt("GameScene_01", 1);
+        PlayerPrefs.SetInt("Level_001", 1);
 
         if (PlayerPrefs.GetInt(levelToLoad)==1)
         {

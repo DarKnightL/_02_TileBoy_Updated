@@ -117,4 +117,14 @@ public class PlayerController : MonoBehaviour
     private void DieCo() {
         StartCoroutine(Die());
     }
+
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (collider.IsTouchingLayers(LayerMask.GetMask("Boss")))
+        {
+            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 2f, 0f);
+            other.gameObject.SetActive(false);
+        }
+    }
 }

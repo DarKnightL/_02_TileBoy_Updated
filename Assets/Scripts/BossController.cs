@@ -30,7 +30,7 @@ public class BossController : MonoBehaviour {
     public int bossHealth;
     public int currentHealth;
 
-    private LevelManager levelManager;
+
 
     public bool waitForRespawn;
 
@@ -70,7 +70,7 @@ public class BossController : MonoBehaviour {
             //Boss
             boss.SetActive(false);
             bossActive = false;
-            boss.transform.position = rightPoint.position;
+            //boss.transform.position = rightPoint.position;
             bossRight = true;
             currentHealth = bossHealth;
 
